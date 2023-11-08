@@ -1,0 +1,56 @@
+﻿<div class="aside-top">
+    <a asp-action="Index" asp-controller="Home" class="brand-wrap">
+        <img src="~/Manage/assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+    </a>
+    <div>
+        <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+    </div>
+</div>
+<nav>
+    <ul class="menu-aside">
+        <li class="menu-item active">
+            <a class="menu-link" asp-action="Index" asp-controller="Home">
+                <i class="icon material-icons md-home"></i>
+                <span class="text">Əsas səhifə</span>
+            </a>
+        </li>
+        <li class="menu-item has-submenu">
+            <a class="menu-link">
+                <i class="icon material-icons md-comment"></i>
+                <span class="text" >Məqalələr</span>
+            </a>
+            <div class="submenu">
+                <a asp-action="Index" asp-controller="Blog">Bütün məqalələr</a>
+                <a  asp-action="Create" asp-controller="Blog">Məqalə əlavə et</a>
+            </div>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" asp-action="Index" asp-controller="Tag">
+                <i class="icon material-icons md-local_offer"></i>
+                <span class="text"> Taqlar </span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" asp-action="Index" asp-controller="Review">
+                <i class="icon material-icons md-comment"></i>
+                <span class="text">Rəylər</span>
+            </a>
+        </li>
+        <li class="menu-item">
+
+            <a class="menu-link"  asp-action="Index" asp-controller="User">
+                <i class="icon material-icons md-person"></i>
+                <span class="text">İstifadəçilər</span>
+            </a>
+        </li>
+        <li class="menu-item ">
+            <a class="menu-link"  asp-action="Index" asp-controller="Role">
+                <i class="icon material-icons md-person"></i>
+                <span class="text">Rollar</span>
+            </a>
+        </li>
+
+    </ul>
+    <br>
+    <br>
+</nav>

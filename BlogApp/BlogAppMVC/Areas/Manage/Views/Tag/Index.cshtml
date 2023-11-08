@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model IDataResult<List<TagGetDto>>
+<div class="content-header">
+    <div>
+        <h2 class="content-title card-title">Taqlar</h2>
+        <p>Taq əlavə edin, redaktə edin və ya silin</p>
+    </div>
+    <div>
+        <div class="d-grid">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Tag">Taq Yarat</a>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+					<partial name="_tagTablePartial" model="Model.Data" />
+                </div>
+            </div>
+        </div> 
+    </div> 
+</div>

@@ -1,0 +1,51 @@
+﻿@model List<TagGetDto>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ad</th>
+            <th>Status</th>
+            <th>Əməliyyat</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (TagGetDto tag in Model)
+        {
+            <tr>
+                <td>@tag.Id</td>
+                <td><b>@tag.Name</b></td>
+                <td>
+                    @if (tag.isDeleted)
+                    {
+                        @:<span class="badge rounded-pill alert-danger">Deaktiv</span>
+                    }
+                    else
+                    {
+                        @:<span class="badge rounded-pill alert-success">Aktiv</span>
+                    }
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                        @if (!tag.isDeleted)
+                        {
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-action="Get" asp-controller="Tag" asp-route-id="@tag.Id">Ətraflı bax</a>
+                                <a class="dropdown-item" asp-action="Update" asp-controller="Tag" asp-route-id="@tag.Id">Redaktə et</a>
+                                <a class="dropdown-item text-danger" asp-action="Delete" asp-controller="Tag" asp-route-id="@tag.Id">Sil</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-action="Get" asp-controller="Tag" asp-route-id="@tag.Id">Ətraflı bax</a>
+                                <a class="dropdown-item" asp-action="Recover" asp-controller="Tag" asp-route-id="@tag.Id">Bərpa et</a>
+                                <a class="dropdown-item text-danger" asp-action="HardDelete" asp-controller="Tag" asp-route-id="@tag.Id">Birdəfəlik sil</a>
+                            </div>
+                        }
+                    </div> <!-- dropdown //end -->
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,192 @@
+﻿
+	    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Neon</title>
+    <link rel="preconnect" href="index.html">
+    <script>
+        if (typeof(Storage) !== 'undefined') {
+            let themeMode = document.documentElement.getAttribute('data-theme');
+            if (themeMode !== null && themeMode === 'system') {
+                setSysPrefColor();
+            }
+            const theme = localStorage.getItem('selected-theme');
+            if (theme == 'light') {
+                setColorScheme('light');
+            } else if (theme == 'dark') {
+                setColorScheme('dark');
+            }
+        }
+
+        function setSysPrefColor() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setColorScheme('dark');
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+                if (e.matches) {
+                    setColorScheme('dark');
+                } else {
+                    setColorScheme('light');
+                }
+            });
+        }
+
+        function setColorScheme(scheme) {
+            if (scheme == 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        }
+    </script>
+    <link href="~/assets/css/style.min296f.css?v=7ce521441b" rel="stylesheet">
+    <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+
+    <style>
+         :root:not([data-theme=dark]) {
+            --body-background-color: #F9F9FF;
+        }
+    </style>
+    <meta name="description" content="Neon is a premium multipurpose Ghost theme suitable for personal, professional, magazine, brand blog and newsletter." />
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="next" href="page/2/index.html" />
+
+    <meta property="og:site_name" content="Neon" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Neon" />
+    <meta property="og:description" content="Neon is a premium multipurpose Ghost theme suitable for personal, professional, magazine, brand blog and newsletter." />
+    <meta property="og:url" content="https://neon.gbjsolution.com/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1519681393784-d120267933ba?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDZ8fHdhbGxwYXBlcnxlbnwwfHx8fDE2NzE2MDMyNjM&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
+    />
+    <meta property="article:publisher" content="https://www.facebook.com/gbjsolution" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Neon" />
+    <meta name="twitter:description" content="Neon is a premium multipurpose Ghost theme suitable for personal, professional, magazine, brand blog and newsletter." />
+    <meta name="twitter:url" content="https://neon.gbjsolution.com/" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1519681393784-d120267933ba?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDZ8fHdhbGxwYXBlcnxlbnwwfHx8fDE2NzE2MDMyNjM&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
+    />
+    @*<meta name="twitter:site" content="@gbjsolution" />*@
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1334" />
+
+    <meta name="generator" content="Ghost 5.25" />
+    <link rel="alternate" type="application/rss+xml" title="Neon" href="rss/index.html" />
+    @*<script defer src="../cdn.jsdelivr.net/ghost/portal%40_2.22/umd/portal.min.js" data-ghost="https://neon.gbjsolution.com/" data-key="2e91c865c5e5248d0a3d5eaf71" data-api="https://neon.gbjsolution.com/ghost/api/content/" crossorigin="anonymous"></script>*@
+    <style id="gh-members-styles">
+        .gh-post-upgrade-cta-content,
+        .gh-post-upgrade-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            width: 100%;
+            color: #ffffff;
+            font-size: 16px;
+        }
+        
+        .gh-post-upgrade-cta-content {
+            border-radius: 8px;
+            padding: 40px 4vw;
+        }
+        
+        .gh-post-upgrade-cta h2 {
+            color: #ffffff;
+            font-size: 28px;
+            letter-spacing: -0.2px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .gh-post-upgrade-cta p {
+            margin: 20px 0 0;
+            padding: 0;
+        }
+        
+        .gh-post-upgrade-cta small {
+            font-size: 16px;
+            letter-spacing: -0.2px;
+        }
+        
+        .gh-post-upgrade-cta a {
+            color: #ffffff;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: none;
+            text-decoration: underline;
+        }
+        
+        .gh-post-upgrade-cta a:hover {
+            color: #ffffff;
+            opacity: 0.8;
+            box-shadow: none;
+            text-decoration: underline;
+        }
+        
+        .gh-post-upgrade-cta a.gh-btn {
+            display: block;
+            background: #ffffff;
+            text-decoration: none;
+            margin: 28px 0 0;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .gh-post-upgrade-cta a.gh-btn:hover {
+            opacity: 0.92;
+        }
+    </style>
+    <script async src="https://js.stripe.com/v3/"></script>
+    @*<script defer src="../cdn.jsdelivr.net/ghost/sodo-search%40_1.1/umd/sodo-search.min.js" data-key="2e91c865c5e5248d0a3d5eaf71" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://neon.gbjsolution.com/" crossorigin="anonymous"></script>*@
+    <script defer src="public/cards.min296f.js?v=7ce521441b"></script>
+    <link rel="stylesheet" type="text/css" href="public/cards.min296f.css?v=7ce521441b">
+    <script defer src="public/member-attribution.min296f.js?v=7ce521441b"></script>
+    <script>
+        const introStyle = localStorage.getItem('intro-style');
+        if (introStyle !== null) {
+            document.documentElement.setAttribute('data-intro', introStyle);
+        } else {
+            document.documentElement.setAttribute('data-intro', 'one');
+        }
+    </script>
+    <style>
+        .cover {
+            display: none;
+        }
+        
+        [data-intro=one] .home-intro-one {
+            display: block;
+        }
+        
+        [data-intro=two] .home-intro-two {
+            display: block;
+        }
+        
+        [data-intro=three] .home-intro-three {
+            display: block;
+        }
+        
+         :root:not([data-theme="dark"]) body {
+            --body-background-color: var(--body-custom-background-color, #F9F9FF);
+        }
+        
+        .hide-subscrition .subscription-text,
+        .hide-subscrition .cover-subscribe-form {
+            display: none;
+        }
+        
+        .sidebar.hidden {
+            display: none;
+        }
+    </style>
+    <style>
+         :root {
+            --ghost-accent-color: #FB2576;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+

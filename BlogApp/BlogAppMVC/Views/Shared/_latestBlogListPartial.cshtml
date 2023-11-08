@@ -1,0 +1,51 @@
+﻿@inject ITagService _tagService;
+@model List<BlogGetDto>
+@{
+    string[] tagColors = { "#7f1aa2", "#179926", "#0395c5", "#00129e", "#710073", "#c16a07", "#b4056e" };
+}
+<div class="widget widget-tags">
+    <h3 class="h4 widget-title">Teqlər</h3>
+    <div class="widget-content">
+        <div class="tag-list">
+            @if ((await _tagService.GetAllAsync(false)).Success)
+            {
+                List<TagGetDto> tags = (await _tagService.GetAllAsync(false)).Data;
+                @foreach (TagGetDto tag in tags)
+                {
+                    var colorIndex = @tagColors.Length > 1 ? new Random().Next(@tagColors.Length) : 0; // Random index if there are multiple colors, otherwise use index 0
+                    var color = tagColors[colorIndex];
+                    <a asp-action="Get" asp-controller="Tag" asp-route-id="@tag.Id">
+                        <span class="tag-accent" style="background: @color;"></span>
+                        @tag.Name
+                    </a>
+                }
+
+            }
+        </div>
+    </div>
+</div>
+<div class="widget widget-posts">
+    <h3 class="h4 widget-title">Ən son məqalələr</h3>
+    <div class="widget-content">
+        @foreach (BlogGetDto blog in @Model)
+        {
+            <article class="post-small flex">
+                <div class="post-img-container">
+                    <a  asp-action="Get" asp-controller="Blog" asp-route-id="@blog.Id" class="post-img-wrap">
+                        <img src="~/uploads/blog/@blog.BlogImages.FirstOrDefault().ImagePath" alt="@blog.Title" loading="lazy">
+                    </a>
+                </div>
+                <div class="post-info-wrap">
+                    <h3 class="post-title h5">
+                        <a asp-action="Get" asp-controller="Blog" asp-route-id="@blog.Id">@blog.Title</a>
+                        <div class="post-meta text-s">
+                            <span class="read-time">
+                                <svg><use xlink:href="#i-clock"></use></svg>@blog.ReadingTime dəqiqə
+                            </span>
+                        </div>
+                </div>
+            </article>
+        }
+
+    </div>
+</div>

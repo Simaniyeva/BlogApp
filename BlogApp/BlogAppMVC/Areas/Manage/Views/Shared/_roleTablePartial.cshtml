@@ -1,0 +1,37 @@
+﻿@model List<RoleGetDto>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ad</th>
+            <th>İstifadəçi sayı</th>
+            <th>Əməliyyat</th>
+            <th>Bax</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@Model[i].Name</td>
+                <td>@Model[i].Users.Count</td>
+                <td>
+                    <div class="dropdown">
+                        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-action="Update" asp-controller="Role" asp-route-id="@Model[i].Id">Redaktə et</a>
+                                <a class="dropdown-item text-danger" asp-action="Delete" asp-controller="Role" asp-route-id="@Model[i].Id">Sil</a>
+                            </div>
+                    </div> 
+                </td>
+                  <td>
+                    <a href="javascript:0" data-bs-toggle="modal" data-bs-target="#modal-contact" class="view-detail" id="infoBtn" data-id="@Model[i].Id">
+                        <i class="mdi mdi-eye-plus-outline"></i>
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

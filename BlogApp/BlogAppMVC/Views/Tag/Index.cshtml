@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model HomeVM
+<div class="row">
+    <div class="col-12">
+        <div class="post-header custom-page-header">
+            <h1 class="post-title text-center">Teqlər</h1>
+        </div>
+    </div>
+</div>
+<div class="row js-sortable-wrap">
+    @foreach (TagGetDto tag in Model.TagsResult.Data)
+    {
+        <div class="col-xl-3 col-md-4 col-sm-6" data-name="@tag.Name" data-index="0">
+            <div class="tag-card">
+                <div class="tag-info-wrap" style="justify-content:center;text-align:center;">
+                    <h2 class="tag-name h4"><a asp-action="Get" asp-controller="Tag" asp-route-id="@tag.Id">@tag.Name</a></h2>
+                    <div class="post-count">@tag.BlogTags.Count()</div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>

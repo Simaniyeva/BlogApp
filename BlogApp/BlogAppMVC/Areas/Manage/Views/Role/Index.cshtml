@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model IDataResult<List<RoleGetDto>>
+<div class="content-header">
+    <div>
+        <h2 class="content-title card-title">Rollar</h2>
+        <p>Rol əlavə edin, redaktə edin və ya silin</p>
+    </div>
+    <div>
+        <div class="d-grid">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Role">Rol yarat</a>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <partial name="_roleTablePartial" model="Model.Data" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-contact" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content px-4">
+            <div class="modal-header border-bottom-0">
+                <h3>Rol`un detalları</h3>
+                <button type="button" class="btn-close-icon justify-content-end" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="mdi mdi-close"></i>
+                </button>
+            </div>
+            <hr width="100%" color="blue" />
+
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+<script>
+    $(".table").on("click", "#infoBtn", function () {
+        var id = $(this).data('id');
+        $.ajax({
+            url: "@Url.Action("Get", "Role")",
+            data: { id: id },
+            success: function (data) {
+                $("#modal-contact .modal-dialog .modal-body").html(data);
+            }
+        });
+    });
+</script>
+}
+

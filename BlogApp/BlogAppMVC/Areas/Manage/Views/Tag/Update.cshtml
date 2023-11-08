@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Update";
+}
+@model TagUpdateDto
+<div class="row justify-content-center">
+    <div class="card mb-4 col-lg-6">
+        <div class="card-header">
+            <h4>Taqı redaktə</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Update" asp-controller="Tag">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-4">
+                            <label asp-for="Name" class="form-label">Ad</label>
+                            <input asp-for="Name" class="form-control">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Yenilə</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

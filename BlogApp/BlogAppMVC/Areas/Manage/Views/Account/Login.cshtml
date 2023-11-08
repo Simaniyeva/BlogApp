@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+@model LoginDto;
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Manage/assets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="~/Manage/assets/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="dark">
+    <main>
+        <section class="content-main mt-80 mb-80">
+            <div class="card mx-auto card-login shadow">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Sign in</h4>
+                    <form  asp-controller="Account" asp-action="Login" asp-area="Manage">
+                        <div class="mb-3">
+                            <input asp-for="Email" class="form-control" placeholder="Username or email" type="text">
+                        </div> <!-- form-group// -->
+                        <div class="mb-3">
+                            <input asp-for="Password" class="form-control" placeholder="Password" type="password">
+                        </div> <!-- form-group// -->
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100"> Login </button>
+                        </div>
+                    </form>
+                    <p class="text-center mb-4">Don't have account? <a href="#">Sign up</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="~/Manage/assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="~/Manage/assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="~/Manage/assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="~/Manage/assets/js/main.js" type="text/javascript"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-account-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 Mar 2023 20:45:38 GMT -->
+</html>
+

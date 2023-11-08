@@ -1,0 +1,91 @@
+﻿@{
+    string[] tagColors = { "#7f1aa2", "#179926", "#0395c5", "#00129e", "#710073", "#c16a07", "#b4056e" };
+}
+@model List<BlogGetDto>
+<div class="js-post-list-wrap">
+    @foreach (BlogGetDto blog in Model)
+    {
+        <article class="post-card flex js-post-card">
+            <div class="post-img-container">
+                <a asp-action="Get" asp-controller="Blog" asp-route-id="@blog.Id" class="post-img-wrap">
+                    <img loading="lazy" srcset="~/uploads/blog/@(blog.BlogImages.FirstOrDefault().ImagePath)
+                     sizes="(max-width: 472px) 400px, (max-width: 767px) 600px, (min-width: 768px) 400px, 400px"
+                     src="~/uploads/blog/@(blog.BlogImages.FirstOrDefault().ImagePath)" alt="Blog Image">
+                </a>
+            </div>
+            <div class="post-info-wrap">
+                <div class="tag-list">
+                    @foreach (BlogTagGetDto tag in blog.BlogTags)
+                    {
+                        var colorIndex = @tagColors.Length > 1 ? new Random().Next(@tagColors.Length) : 0; // Random index if there are multiple colors, otherwise use index 0
+                        var color = tagColors[colorIndex];
+                        <a asp-action="Get" asp-controller="Tag">
+                            <span class="tag-accent" style="background: @color;"></span>
+                            @if (@tag.Tag?.Name is not null)
+                            {
+                                @tag.Tag.Name
+                            }
+                        </a>
+                    }
+
+                    <button class="savedItembtn mb-4">
+
+                        @if (blog.SavedItems.Count != 0)
+                        {
+                            @foreach (SavedItemGetDto savedItem in blog.SavedItems)
+                            {
+                                if (savedItem.User.Id != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                                {
+                                    <i class="fa-regular fa-bookmark  add-to-savedItem save show" onclick="AddToSavedItem(this)" data-id="@savedItem.Blog.Id"></i>
+                                    <i class="fa-solid fa-bookmark remove-from-savedItem save" onclick="RemoveFromFav(this)" data-id="@savedItem.Id" data-blog-id="@savedItem.Blog.Id"></i>
+
+                                }
+                                else
+                                {
+                                    <i class="fa-regular fa-bookmark  add-to-savedItem  save" onclick="AddToSavedItem(this)" data-id="@savedItem.Blog.Id"></i>
+                                    <i class="fa-solid fa-bookmark  remove-from-savedItem save show" onclick="RemoveFromFav(this)" data-id="@savedItem.Id" data-blog-id="@savedItem.Blog.Id"></i>
+
+
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <i class="fa-regular fa-bookmark  add-to-savedItem save show " onclick="AddToSavedItem(this)" data-id="@blog.Id"></i>
+                            <i class="fa-solid fa-bookmark remove-from-savedItem save" onclick="RemoveFromFav(this)" data-blog-id="@blog.Id"></i>
+
+                        }
+
+                    </button>
+                </div>
+                <h2 class="post-title">
+                    <a asp-action="Get" asp-controller="Blog" asp-route-id="@blog.Id">@blog.Title</a>
+                </h2>
+                <div class="post-excerpt">
+                    @blog.Description
+                </div>
+                <div class="post-meta text-s">
+                    <time class="post-date" datetime="2022-05-02">
+                        <svg><use xlink:href="#i-calendar"></use></svg>@blog.CreatedDate.Date.ToString("MMMM/dd/yyyy")
+                    </time>
+                    <span class="read-time">
+                        <svg><use xlink:href="#i-clock"></use></svg>@blog.ReadingTime min
+                    </span>
+                    <span class="read-time">
+                        <i class="fa-solid fa-eye"></i> @blog.ViewCount View
+                    </span>
+                    <span class="read-time">
+                        <i class="fa-regular fa-bookmark"></i> @blog.SavedItems.Count()
+                    </span>
+                    <span class="read-time">
+                        <i class="fa-regular fa-comment"></i> @blog.Reviews.Count()
+                    </span>
+                </div>
+            </div>
+        </article>
+    }
+@*
+    <div class="pagination-wrap text-center" id="pagination-wrap">
+        <button class="btn post-load-button" id="load-more"><span>Load more</span></button>
+    </div>*@
+</div>

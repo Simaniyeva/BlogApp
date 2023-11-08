@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model IDataResult<List<BlogGetDto>>
+<div class="content-header">
+    <div>
+        <h2 class="content-title card-title">Məqalələr</h2>
+        <p>Məqalə əlavə edin, redaktə edin və ya silin</p>
+    </div>
+    <div>
+        <div class="d-grid">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Blog">Məqalə əlavə et</a>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table">
+					<partial name="_blogTablePartial" model="Model.Data" />
+
+                </div>
+            </div> <!-- .col// -->
+        </div> <!-- .row // -->
+    </div> <!-- card body .// -->
+</div>

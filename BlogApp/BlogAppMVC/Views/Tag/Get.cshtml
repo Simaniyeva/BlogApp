@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Get";
+    string[] tagColors = { "#7f1aa2", "#179926", "#0395c5", "#00129e", "#710073", "#c16a07", "#b4056e" };
+}
+@model IDataResult<TagGetDto>
+<div class="row">
+    <div class="col-12">
+        <div class="tag-cover-card mx-auto flex has-image">
+            <div class="tag-cover-content-wrap mx-auto text-center">
+                <h1 class="tag-title">@Model.Data.Name</h1>
+                <div class="tag-description">
+                     @Model.Data.BlogTags.Count Məqalə
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row main-content ">
+        <div class="col-lg-8 js-demo-content-area">
+            <div class="js-post-list-wrap">
+                @{
+                    List<BlogGetDto> blogs = new();
+                    foreach (BlogTagGetDto blogTag in Model.Data.BlogTags)
+                    {
+                        blogs.Add(blogTag.Blog);
+                    }
+                }
+                <partial name="_blogListPartial" model="blogs" />
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="sidebar sidebar-sticky">
+                <div class="sidebar-wrap" id="sidebarWrap"> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "@Url.Action("GetRelated", "Blog")",
+                success: function (result) {
+                    $("#sidebarWrap").html(result);
+                }
+            });
+        });
+    </script>
+}

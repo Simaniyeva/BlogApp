@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model ManageHomeVM
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card card-body mb-4">
+            <article class="icontext">
+                <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-person"></i></span>
+                <div class="text">
+                    <h6 class="mb-1 card-title">Ümumi İstifadəçi sayı</h6> <span>@Model.UserResult.Count()</span>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card card-body mb-4">
+            <article class="icontext">
+                <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-comment"></i></span>
+                <div class="text">
+                    <h6 class="mb-1 card-title">Ümumi rəy sayı</h6> <span>@Model.ReviewResult.Count()</span>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card card-body mb-4">
+            <article class="icontext">
+                <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-bookmark"></i></span>
+                <div class="text">
+                    <h6 class="mb-1 card-title">Yadda Saxlanılan Məqalə Sayı</h6> <span>@Model.SavedItemResult.Count()</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card mb-4">
+            <article class="card-body">
+                <h5 class="card-title">Yeni üzvlər</h5>
+                <div class="new-member-list">
+                    @foreach (UserGetDto user in Model.UserResult)
+                    {
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <h6>@user.UserName</h6>
+                                    <p class="text-muted font-xs">
+                                        @user.Email
+                                    </p>
+                                </div>
+                            </div>
+                            <a asp-action="Get" asp-controller="User" asp-route-id="@user.Id" class="btn btn-xs">Ətraflı göstər</a>
+                        </div>
+                    }
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <header class="card-header">
+                <h4 class="card-title">Son rəylər</h4>
+            </header>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="table-responsive">
+                    <partial name="_reviewTablePartial" model="Model.ReviewResult" />
+
+                    </div>
+                </div> <!-- table-responsive end// -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿@model List<BlogGetDto>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Şəkil</th>
+            <th>Başlıq</th>
+            <th>Taqlar</th>
+            <th>Rəy sayı</th>
+            <th>Saxlanma sayı</th>
+            <th>Oxuma müddəti</th>
+            <th>Status</th>
+            <th>Əməliyyat</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (BlogGetDto blog in Model)
+        {
+            <tr>
+                <td>@blog.Id</td>
+                <td><img class="tbl-thumb" src="~/uploads/blog/@(blog.BlogImages.FirstOrDefault().ImagePath)" alt="Product Image" style="width: 54px; height:52px;border-radius: 15px;" /></td>
+                <td><b>@blog.Title</b></td>
+                <td>
+                    @{
+                        if (blog.BlogTags.Count > 0)
+                        {
+                            foreach (BlogTagGetDto blogTag in blog.BlogTags)
+                            {
+                                @blogTag.Tag.Name @:
+                            }
+                        }
+                        else
+                        {
+                            @:Taq yoxdur
+                        }
+                    }
+                </td>
+                <td>@blog.Reviews.Count</td>
+                <td>@blog.SavedItems.Count</td>
+                <td>@blog.ReadingTime</td>
+
+                <td>
+                    @if (blog.isDeleted)
+                    {
+                        @:<span class="badge rounded-pill alert-danger">Deaktiv</span>
+
+                    }
+                    else
+                    {
+                        @:<span class="badge rounded-pill alert-success">Aktiv</span>
+
+                    }
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                        <div class="dropdown-menu blogDropDown">
+                            <a class="dropdown-item" asp-action="Get" asp-controller="Blog" asp-route-id="@blog.Id">Ətraflı bax</a>
+                            @if (!blog.isDeleted)
+                            {
+                                <a class="dropdown-item" asp-action="Update" asp-controller="Blog" asp-route-id="@blog.Id">Redaktə et</a>
+                                <a class="dropdown-item text-danger deleteBlog" id="@blog.Id">Sil</a>
+                            }
+                            else
+                            {
+                                <a class="dropdown-item recoverBlog" id="@blog.Id">Bərpa et</a>
+                                <a class="dropdown-item text-danger hardDeleteBlog" id="@blog.Id">Birdəfəlik sil</a>
+                            }
+                        </div>
+                    </div> <!-- dropdown //end -->
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <partial name="_headPartial" />
+    @RenderSection("Links",false)
+</head>
+<body>
+
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <partial name="_leftSidebarPartial" />
+    </aside>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+            <partial name="_headerPartial" />
+        </header>
+        <section class="content-main">
+            @RenderBody() 
+        </section> <!-- content-main end// -->
+    <partial name="_footerPartial" />
+
+    </main>
+
+    <!-- page-body-wrapper ends -->
+    <partial name="_scriptsPartial" />
+    @RenderSection("Scripts",false)
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+    <script src="~/Manage/assets/js/nonrefresh-blog.js"></script>
+
+</body>
+</html>

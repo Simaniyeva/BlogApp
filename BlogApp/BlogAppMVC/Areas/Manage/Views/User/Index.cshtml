@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model IDataResult<List<UserGetDto>>
+<div class="content-header">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card mb-4">
+                <header class="card-header">
+                    <div>
+                        <h2 class="content-title card-title">Adminlər </h2>
+                        <p>Admini redaktə edin,revoke və ya evoke edin</p>
+                    </div>
+                </header> <!-- card-header end// -->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <partial name="_userTablePartial" model='Model.Data.Where(x=>x.Roles.Contains("Admin") == true).ToList()' />
+
+                        <!-- table-responsive.// -->
+                    </div>
+                </div> <!-- card-body end// -->
+            </div>
+        </div>
+        <div class="col-xl-12 col-lg-12">
+            <div class="card mb-4">
+                <header class="card-header">
+                    <div>
+                        <h2 class="content-title card-title">İstifadəçilər </h2>
+                        <p>İstifadəçini redaktə edin,revoke və ya evoke edin</p>
+                    </div>
+                </header> <!-- card-header end// -->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <partial name="_userTablePartial" model='Model.Data.Where(x=>x.Roles.Contains("User") == true).ToList()' />
+
+                        <!-- table-responsive.// -->
+                    </div>
+                </div> <!-- card-body end// -->
+            </div>
+        </div>
+    </div>
+</div>
+
+

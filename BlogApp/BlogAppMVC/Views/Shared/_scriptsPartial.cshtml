@@ -1,0 +1,385 @@
+﻿<script src="~/assets/libs/jquery.js"></script>
+<script src="~/assets/js/savedItemFunctions.js"></script>
+<script src="~/assets/js/relatedPost.js"></script>
+<script>
+            var nextPage = '';
+            var totalPages = '';
+        </script>
+		<script src="~/assets/js/plugin/tocbot.min296f.js"></script>
+<script>
+tocbot.init({
+  tocSelector: '.js-toc',
+  contentSelector: '.single-post-content',
+  headingSelector: 'h1, h2, h3'
+});
+</script>
+
+		<script src="~/assets/js/app.bundle.min296f.js"></script>
+        <script src="~/assets/js/plugin/prism.js"></script>
+<style>
+    :root {
+        --shadow: 0 15px 40px 5px rgba(132, 132, 133, 0.15);
+    }
+    [data-theme=dark] {
+		--shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    }
+    .settings-panel {
+        width: 320px;
+        position: fixed;
+        top: 108px;
+        right: -1px;
+        background: var(--card-background-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-8) 0 0 var(--radius-8);
+        padding: 16px 24px;
+        z-index: 9999;
+        transition: right 0.25s;
+        box-shadow:var(--shadow); 
+    }
+    .settings-panel.closed {
+        right: -320px;
+    }
+    .settings-heading {
+        position: absolute;
+    	left: -49px;
+    	transform: rotate(90deg);
+    	padding: 0 8px;
+        height: 40px;
+        line-height: 40px;
+    	top: 76px;
+        background-color: var(--theme-color);
+        border-radius: 0 0 var(--radius-8) 0;
+        color: var(--white);
+        white-space: nowrap;
+    }
+    .settings-panel-toggle {
+        box-shadow: var(--shadow);
+    }
+    .settings-panel .icon {
+        position: absolute;
+        left: -40px;
+        background-color: var(--theme-color);
+        color: var(--white);
+        padding: 8px 0;
+        text-align: center;
+        width: 40px;
+        line-height: 0;
+        border-radius: var(--radius-8) 0 0 0;
+        cursor: pointer;
+    }
+    .settings-panel .icon:hover {
+        background-color: var(--theme-color);
+        color: var(--white);
+    }
+    .settings-panel .icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    .setting-section {
+        border-top: 1px solid var(--c-border-light);
+        margin-bottom: 8px;
+    }
+    .setting-type-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 16px;
+    }
+    .setting-type-toggle label {
+        margin-bottom: 4px;
+    }
+    .setting-section-title label {
+        font-size: 0.875rem;
+    }
+
+    select {
+        width: 100%;
+        padding: 4px 8px;
+        background: var(--body-background-color);
+        font-size: 1rem;
+        color: var(--text-color);
+    }
+    .color-input {
+        flex: 0 0 32px;
+        height: 32px;: 8px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        box-shadow: none;
+        background: none;
+        cursor: pointer;
+        border: none;
+        padding: 0;
+    }
+    ::-webkit-color-swatch-wrapper {
+    	padding: 0;
+    }
+    ::-webkit-color-swatch{
+    	border: 2px solid var(--black);
+    	border-radius: 0;
+    }
+    ::-moz-color-swatch,
+    ::-moz-focus-inner{
+    	border: 0;
+    }
+    ::-moz-focus-inner{
+    	padding: 0;
+    }
+    .note {
+        border-top: 1px solid var(--c-border-light);
+        margin-top: 8px;
+        padding-top: 8px;
+    }
+    .btn-sm svg {
+        width: 16px;
+		height: 16px;
+		margin-right: 8px;
+        vertical-align: middle;
+	}
+</style>
+
+<div class="settings-panel closed" id="setting-panel">
+    <div class="icon" id="setting-panel-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 14.187v-4.374c-2.148-.766-2.726-.802-3.027-1.529-.303-.729.083-1.169 1.059-3.223l-3.093-3.093c-2.026.963-2.488 1.364-3.224 1.059-.727-.302-.768-.889-1.527-3.027h-4.375c-.764 2.144-.8 2.725-1.529 3.027-.752.313-1.203-.1-3.223-1.059l-3.093 3.093c.977 2.055 1.362 2.493 1.059 3.224-.302.727-.881.764-3.027 1.528v4.375c2.139.76 2.725.8 3.027 1.528.304.734-.081 1.167-1.059 3.223l3.093 3.093c1.999-.95 2.47-1.373 3.223-1.059.728.302.764.88 1.529 3.027h4.374c.758-2.131.799-2.723 1.537-3.031.745-.308 1.186.099 3.215 1.062l3.093-3.093c-.975-2.05-1.362-2.492-1.059-3.223.3-.726.88-.763 3.027-1.528zm-4.875.764c-.577 1.394-.068 2.458.488 3.578l-1.084 1.084c-1.093-.543-2.161-1.076-3.573-.49-1.396.581-1.79 1.693-2.188 2.877h-1.534c-.398-1.185-.791-2.297-2.183-2.875-1.419-.588-2.507-.045-3.579.488l-1.083-1.084c.557-1.118 1.066-2.18.487-3.58-.579-1.391-1.691-1.784-2.876-2.182v-1.533c1.185-.398 2.297-.791 2.875-2.184.578-1.394.068-2.459-.488-3.579l1.084-1.084c1.082.538 2.162 1.077 3.58.488 1.392-.577 1.785-1.69 2.183-2.875h1.534c.398 1.185.792 2.297 2.184 2.875 1.419.588 2.506.045 3.579-.488l1.084 1.084c-.556 1.121-1.065 2.187-.488 3.58.577 1.391 1.689 1.784 2.875 2.183v1.534c-1.188.398-2.302.791-2.877 2.183zm-7.125-5.951c1.654 0 3 1.346 3 3s-1.346 3-3 3-3-1.346-3-3 1.346-3 3-3zm0-2c-2.762 0-5 2.238-5 5s2.238 5 5 5 5-2.238 5-5-2.238-5-5-5z"/></svg>
+        <div class="settings-heading">
+        THEME OPTIONS
+    </div>
+    </div>
+    
+    <div class="settings-wrap">
+        <div class="setting-section">
+            <div class="setting-section-title">
+                <label for="intro_type">Home intro style</label>
+            </div>
+            <select name="intro_type" id="intro_type">
+				<option value="one">Style 1 - featured posts slider</option>
+				<option value="two">Style 2 - tilte and description</option>
+				<option value="three">Style 3 - personal introduction</option>
+			</select>
+        </div>
+        <div class="setting-section">
+            <div class="setting-section-title">
+                <label for="nav_type">Nav style</label>
+            </div>
+            <select name="nav_type" id="nav_type">
+				<option value="normal">Normal</option>
+				<option value="sticky">Sticky</option>
+                <option value="sticky-hide">Sticky Hide</option>
+			</select>
+        </div>
+        <div class="setting-section setting-type-toggle">
+            <label for="hide_sidebar">Hide sidebar</label>
+            <input type="checkbox" id="hide_sidebar" name="hide_sidebar" class="toggle-switch">
+        </div>
+        <div class="setting-section setting-type-toggle">
+            <label for="rounded_corner">Disable rounded corner</label>
+            <input type="checkbox" id="rounded_corner" name="rounded_corner" class="toggle-switch">
+        </div>
+        <div class="setting-section setting-type-toggle">
+            <div class="">
+                <label for="accent_color">Choose accent color</label>
+            </div>
+            <input type="color" value="#FB2576" id="accent_color" class="color-input">
+        </div>
+        <div class="setting-section setting-type-toggle">
+            <div class="">
+                <label for="light_bg_color">Choose Light theme background color</label>
+            </div>
+            <input type="color" value="#F9F9FF" id="light_bg_color" class="color-input">
+        </div>
+        <button class="btn btn-sm btn-block btn-icon btn-bordered" style="margin-bottom:16px" onclick="reset();"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.885 3.515c-4.617-4.618-12.056-4.676-16.756-.195l-2.129-2.258v7.938h7.484l-2.066-2.191c2.82-2.706 7.297-2.676 10.073.1 4.341 4.341 1.737 12.291-5.491 12.291v4.8c3.708 0 6.614-1.244 8.885-3.515 4.686-4.686 4.686-12.284 0-16.97z"/></svg><span>Reset all settings</span></button>
+        <a href="https://1.envato.market/neon-ghost" class="btn btn-block btn-icon btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 20.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.304-17l-3.431 14h-2.102l2.541-11h-16.812l4.615 13h13.239l3.474-14h2.178l.494-2h-4.196z"/></svg><span>Get this theme</span></a>
+    </div>
+</div>
+
+
+<script>
+    const root = document.querySelector(':root');
+    const body = document.body;
+    const settingToggle = document.getElementById('setting-panel-toggle');
+    settingToggle.addEventListener('click', function(e) {
+        document.getElementById('setting-panel').classList.toggle('closed');
+    })
+    /* rounded corner */
+    const savedRoundedCorner = localStorage.getItem('rounded-corner');
+    const RoundedCornerOption = document.getElementById('rounded_corner');
+    if(savedRoundedCorner === 'true') {
+        RoundedCornerOption.checked = savedRoundedCorner;
+        body.classList.add('no-rounded');
+    }
+    RoundedCornerOption.addEventListener('change', function() {
+        localStorage.setItem('rounded-corner', this.checked);
+        if (this.checked) {
+            body.classList.add('no-rounded');
+        } else {
+            body.classList.remove('no-rounded');
+        }
+    });
+    
+    /* sidebar*/
+    const savedSidebar = localStorage.getItem('sidebar');
+    const savedSidebarOption = document.getElementById('hide_sidebar');
+    if(savedSidebar === 'true') {
+        console.log(savedSidebar);
+        savedSidebarOption.checked = savedSidebar;
+        handleSidebar(savedSidebar);
+    }
+    savedSidebarOption.addEventListener('change', function() {
+        localStorage.setItem('sidebar', this.checked);
+        handleSidebar(this.checked.toString())
+    });
+    function handleSidebar(option) {
+        const contentArea = document.querySelector('.js-demo-content-area');
+        const sidebar = document.querySelector('.sidebar');
+        if(sidebar) {
+            if(option === 'true') {
+                sidebar.classList.add('hidden');
+                contentArea.classList.remove('col-lg-8');
+                if(contentArea.classList.contains('demo-vertical')) {
+                   contentArea.classList.add('col-lg-12');
+                } else {
+                contentArea.classList.add('col-lg-9');
+                contentArea.classList.add('mx-auto');
+                }
+                let posts= document.querySelectorAll('.col-md-6.js-post-card');
+                                                     console.log(posts);
+                posts.forEach(function(i){
+                    i.classList.add('col-lg-4');
+                    i.classList.remove('col-lg-6');
+                });
+            } else {
+                sidebar.classList.remove('hidden');
+                contentArea.classList.add('col-lg-8');
+                if(contentArea.classList.contains('demo-vertical')) {
+                   contentArea.classList.remove('col-lg-12');
+            	} else {
+                	contentArea.classList.remove('col-lg-9');
+                	contentArea.classList.remove('mx-auto');
+                }
+                let posts= document.querySelectorAll('.col-md-6.js-post-card');
+                posts.forEach(function(i){
+                    i.classList.add('col-lg-6');
+                    i.classList.remove('col-lg-4');
+                });
+            }
+        }
+    }
+/* nav-type */
+    const savedNavType = localStorage.getItem('nav-style');
+    if(savedNavType) {
+        document.getElementById('nav_type').value = savedNavType;
+        body.setAttribute('data-nav', savedNavType);
+    }
+    const navTypeOption = document.getElementById('nav_type');
+    navTypeOption.addEventListener('change', function() {
+        const navType = this.value;
+        body.setAttribute('data-nav', navType);
+        localStorage.setItem('nav-style', navType);
+        handleNav();
+    });
+    /* home intro section */
+    const savedIntroType = localStorage.getItem('intro-style');
+    const introTypeOption = document.getElementById('intro_type');
+    if(savedIntroType) {
+        introTypeOption.value = savedIntroType;
+        document.documentElement.setAttribute('data-intro', savedIntroType);
+    }
+    introTypeOption.addEventListener('change', function() {
+        const introType = this.value;
+        document.documentElement.setAttribute('data-intro', introType);
+        localStorage.setItem('intro-style', introType);
+    });
+    function initNav() {
+        CustomThrottle(handleNav(), 50);
+    }
+    function handleNav() {
+        var scroll = 1;
+        var navType = document.body.getAttribute('data-nav');
+        var header = document.querySelector('.site-header');
+        if(typeof(header) !== undefined && header !== null) {
+            if ( navType === 'sticky') {
+                window.addEventListener('scroll', CustomThrottle(function(){
+                    var currScroll = window.pageYOffset;
+                    if (currScroll > 1) {
+                        header.classList.add("small");
+                    } else {
+                        header.classList.remove("small");
+                    };
+                }, 50));
+            } else if (navType === 'sticky-hide') {
+                window.addEventListener('scroll', CustomThrottle(function(){
+                    var currScroll = window.pageYOffset;
+                    if (currScroll > 1) {
+                        header.classList.add("small");
+                    } else {
+                        header.classList.remove("small");
+                    };
+                    if ( currScroll <= scroll) {
+                        header.classList.add("show");
+                        header.classList.remove("hide");
+                        scroll = currScroll;
+                    } else {
+                        header.classList.remove("show");
+                        header.classList.add("hide");
+                        scroll = currScroll;
+                    }
+                    if (currScroll == 0) {
+                        header.classList.remove("hide");
+                        header.classList.remove("show");
+                        header.classList.remove("sticky");
+                    }
+                }, 50));
+            } else {
+                header.classList.remove("hide");
+                header.classList.remove("show");
+                header.classList.remove("sticky");
+            }
+        }
+    }
+    function CustomThrottle(func, limit) {
+        var lastFunc, lastRan;
+        return function () {
+            var context = this, args = arguments;
+            if (!lastRan) {
+                func.apply(context, args)
+                lastRan = Date.now()
+            } else {
+                clearTimeout(lastFunc)
+                lastFunc = setTimeout(function () {
+                    if ((Date.now() - lastRan) >= limit) {
+                        func.apply(context, args)
+                        lastRan = Date.now()
+                    }
+                }, limit - (Date.now() - lastRan))
+            }
+        }
+    }
+	/* accent color changing */
+    const savedAccentColor = localStorage.getItem('accent-color');
+    const accentColorOption = document.getElementById('accent_color');
+    if(savedAccentColor) {
+        accentColorOption.value = savedAccentColor;
+        root.style.setProperty("--theme-color", savedAccentColor);
+    }
+    accentColorOption.addEventListener('input', function() {
+        const selectedAccentColor = this.value;
+        root.style.setProperty("--theme-color", selectedAccentColor);
+        localStorage.setItem('accent-color', selectedAccentColor);
+    });
+    /* light background color changing */
+    const savedLightBgColor = localStorage.getItem('light-bg-color');
+    const lightBgColorOption = document.getElementById('light_bg_color');
+    if(savedLightBgColor) {
+        lightBgColorOption.value = savedLightBgColor;
+        body.style.setProperty("--body-custom-background-color", savedLightBgColor);
+    }
+    lightBgColorOption.addEventListener('input', function() {
+        const selectedLightBgColor = this.value;
+        body.style.setProperty("--body-custom-background-color", selectedLightBgColor);
+        localStorage.setItem('light-bg-color', selectedLightBgColor);
+    });
+    function reset() {
+        localStorage.clear();
+        location.reload();
+    }
+</script>
