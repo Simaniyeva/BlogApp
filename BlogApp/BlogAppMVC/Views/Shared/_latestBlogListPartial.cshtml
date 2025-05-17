@@ -4,7 +4,7 @@
     string[] tagColors = { "#7f1aa2", "#179926", "#0395c5", "#00129e", "#710073", "#c16a07", "#b4056e" };
 }
 <div class="widget widget-tags">
-    <h3 class="h4 widget-title">Teqlər</h3>
+    <h3 class="h4 widget-title">Tags</h3>
     <div class="widget-content">
         <div class="tag-list">
             @if ((await _tagService.GetAllAsync(false)).Success)
@@ -25,7 +25,7 @@
     </div>
 </div>
 <div class="widget widget-posts">
-    <h3 class="h4 widget-title">Ən son məqalələr</h3>
+    <h3 class="h4 widget-title">Latest articles</h3>
     <div class="widget-content">
         @foreach (BlogGetDto blog in @Model)
         {
@@ -40,7 +40,7 @@
                         <a asp-action="Get" asp-controller="Blog" asp-route-id="@blog.Id">@blog.Title</a>
                         <div class="post-meta text-s">
                             <span class="read-time">
-                                <svg><use xlink:href="#i-clock"></use></svg>@blog.ReadingTime dəqiqə
+                                <svg><use xlink:href="#i-clock"></use></svg>@blog.ReadingTime mins
                             </span>
                         </div>
                 </div>

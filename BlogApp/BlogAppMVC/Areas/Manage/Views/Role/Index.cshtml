@@ -4,12 +4,12 @@
 @model IDataResult<List<RoleGetDto>>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Rollar</h2>
-        <p>Rol əlavə edin, redaktə edin və ya silin</p>
+        <h2 class="content-title card-title">Roles</h2>
+        <p>Add, edit, or delete a role</p>
     </div>
     <div>
         <div class="d-grid">
-            <a class="btn btn-primary" asp-action="Create" asp-controller="Role">Rol yarat</a>
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Role">Create a role</a>
         </div>
     </div>
 </div>
@@ -28,7 +28,7 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content px-4">
             <div class="modal-header border-bottom-0">
-                <h3>Rol`un detalları</h3>
+                <h3>Role details</h3>
                 <button type="button" class="btn-close-icon justify-content-end" data-bs-dismiss="modal" aria-label="Close">
                     <i class="mdi mdi-close"></i>
                 </button>

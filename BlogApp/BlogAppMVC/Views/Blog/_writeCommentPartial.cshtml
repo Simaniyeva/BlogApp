@@ -1,15 +1,15 @@
 ﻿@model ReviewPostDto
 <div class="row">
     <div class="worksingle-comment-footer col-lg-12 m-auto">
-        <h4 class="h5">Rəy bildirin</h4>
+        <h4 class="h5">Give feedback</h4>
         <form class="col-md-12 m-auto" method="POST" asp-action="WriteComment" asp-controller="Blog" role="form">
             <input type="hidden" asp-for="BlogId" />
             <div class="form-group">
-                <textarea class="form-control form-control-lg light-300" id="inputmessage" asp-for=Comment placeholder="Rəyiniz" rows="5"></textarea>
+                <textarea class="form-control form-control-lg light-300" id="inputmessage" asp-for=Comment placeholder="Comment" rows="5"></textarea>
             </div>
             <div class="form-row pt-2">
                 <div class="col-md-12 col-10" style="display:flex;flex-direction:row-reverse">
-                    <button type="submit" class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">Göndər</button>
+                    <button type="submit" class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">Send</button>
                 </div>
             </div>
         </form>

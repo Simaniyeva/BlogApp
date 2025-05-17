@@ -15,7 +15,7 @@
                         <i class="text-primary material-icons md-person"></i>
                     </span>
                     <div>
-                        <h6 class="mb-1">İstifadəçi</h6>
+                        <h6 class="mb-1">User</h6>
                         <p class="mb-1">
                             @Model.Data.User.FirstName @Model.Data.User.LastName <br> <template class="__cf_email__" data-cfemail="9bfaf7fee3dbfee3faf6ebf7feb5f8f4f6">@Model.Data.User.Email</template> <br>@Model.Data.User.PhoneNumber
                         </p>
@@ -23,9 +23,9 @@
                             <i class="icon material-icons md-comment"></i> @Model.Data.Comment
                         </p>
                         <p class="mb-1">
-                            <i style="font-style:italic"> Yazılma tarixi:</i> @Model.Data.CreatedDate
+                            <i style="font-style:italic"> Date of writing:</i> @Model.Data.CreatedDate
                         </p>
-                        <a asp-action="Get" asp-controller="User" asp-route-id="@Model.Data.User.Id">Profili gör</a>
+                        <a asp-action="Get" asp-controller="User" asp-route-id="@Model.Data.User.Id">View profile</a>
                     </div>
                 </article>
             </div>

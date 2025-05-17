@@ -7,10 +7,10 @@ public class BlogPostDtoValidation : AbstractValidator<BlogPostDto>
     public BlogPostDtoValidation()
     {
         RuleFor(p => p.Title).NotEmpty().WithMessage("Blog must be title!").NotNull().WithMessage("Blog must be title!")
-            .Must(ValidName).WithMessage("Title is not valid!").MaximumLength(255).WithMessage("Try something short!")
+            .MaximumLength(255).WithMessage("Try something short!")
                 .MinimumLength(2).WithMessage("Write something longer!");
         RuleFor(p => p.Description).NotNull().WithMessage("Blog must be description!").NotEmpty()
-            .WithMessage("Blog must be description!").MinimumLength(20).WithMessage("Write something longer!")
+            .WithMessage("Blog must be description!").MinimumLength(10).WithMessage("Write something longer!")
                 .WithMessage("Try something short!");
         RuleFor(p => p.ReadingTime).NotEmpty().WithMessage("Blog must be a Reading Time").NotNull()
             .WithMessage("Blog must be a Reading Time").LessThan(30).WithMessage("Try something smaller!")

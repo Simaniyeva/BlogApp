@@ -290,21 +290,21 @@
 </a>
         </div>
         <h1 class="post-title text-center">
-            Qeydiyyat
+            Register
         </h1>
         <form class="members-form text-left needs-validation" data-members-form="signup" autocomplete="off" method="post" action="Register">
             <div class="members-form-box">
                 <div class="text text-danger" asp-validation-summary="ModelOnly" style="color: red"></div>
                 <div class="form-field-wrap">
-                    <label asp-for="FirstName" class="form-control">Ad</label>
+                    <label asp-for="FirstName" class="form-control">First Name</label>
                     <input data-members-name="" type="text" class="name form-field" id="name" placeholder="First Name" asp-for="FirstName" autocomplete="off"> 
                     <span  asp-validation-for="@Model.FirstName" style="color: red"></span>
                     <br/>
-                    <label asp-for="LastName" class="form-control">Soyad</label>
+                    <label asp-for="LastName" class="form-control">Last Name</label>
                     <input data-members-name="" type="text" class="name form-field" id="name" placeholder="Last Name" asp-for="LastName" autocomplete="off"> 
                     <span asp-validation-for="LastName" style="color: red"></span>       
                     <br/>
-                    <label asp-for="UserName" class="sr-only">User Name</label>
+                    <label asp-for="UserName" class="form-control">User Name</label>
                     <input data-members-name="" type="text" class="name form-field" id="name" placeholder="User Name" asp-for="UserName" autocomplete="off"> 
                     <span asp-validation-for="UserName" style="color: red"></span>
                     <br/>
@@ -312,21 +312,21 @@
                     <input data-members-email="" pe="etymail" class="email form-field" asp-for="Email" placeholder="Email address" required="" autocomplete="off"> 
                     <span asp-validation-for="Email" style="color: red"></span>
                     <br/>
-                    <label asp-for="Password" class="form-control">Şifrə</label>
+                    <label asp-for="Password" class="form-control">Passsword</label>
                     <input type="password" data-members-email="" pe="etymail" class="email form-field" asp-for="Password" placeholder="Password" required="" autocomplete="off"> 
                     <span asp-validation-for="@Model.Password" style="color: red"></span>
                     <br/>
-                    <label asp-for="ConfirmPassword" class="form-control"> Təkrar Şifrə</label>
+                                <label asp-for="ConfirmPassword" class="form-control">Confirm Password</label>
                     <input type="password" data-members-email="" pe="etymail" class="email form-field" asp-for="ConfirmPassword" placeholder=" Confirm Password" required="" autocomplete="off"> 
                     <span asp-validation-for="@Model.ConfirmPassword" style="color: red"></span>
                     <br/>
 
-                    <button class="btn btn-block form-field" type="submit" name="submit"><span>Qeydiyyatdan keç</span></button>
+                    <button class="btn btn-block form-field" type="submit" name="submit"><span>Sign up</span></button>
                 </div>
             </div>
         </form>
         <div class="alternate-option text-center">
-            Hesabınız var? <a asp-action="Login" asp-controller="Account">Daxil ol</a>
+            Hesabınız var? <a asp-action="Login" asp-controller="Account">Sign in</a>
         </div>
         </div>
     </div>

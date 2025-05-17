@@ -3,14 +3,14 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Şəkil</th>
-            <th>Başlıq</th>
-            <th>Taqlar</th>
-            <th>Rəy sayı</th>
-            <th>Saxlanma sayı</th>
-            <th>Oxuma müddəti</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Tags</th>
+            <th>Review count</th>
+            <th>Save count</th>
+            <th>Read time</th>
             <th>Status</th>
-            <th>Əməliyyat</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +31,7 @@
                         }
                         else
                         {
-                            @:Taq yoxdur
+                            @:No Tag
                         }
                     }
                 </td>
@@ -42,12 +42,12 @@
                 <td>
                     @if (blog.isDeleted)
                     {
-                        @:<span class="badge rounded-pill alert-danger">Deaktiv</span>
+                        @:<span class="badge rounded-pill alert-danger">Deactive</span>
 
                     }
                     else
                     {
-                        @:<span class="badge rounded-pill alert-success">Aktiv</span>
+                        @:<span class="badge rounded-pill alert-success">Active</span>
 
                     }
                 </td>
@@ -55,16 +55,16 @@
                     <div class="dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                         <div class="dropdown-menu blogDropDown">
-                            <a class="dropdown-item" asp-action="Get" asp-controller="Blog" asp-route-id="@blog.Id">Ətraflı bax</a>
+                            <a class="dropdown-item" asp-action="Get" asp-controller="Blog" asp-route-id="@blog.Id">Show Details</a>
                             @if (!blog.isDeleted)
                             {
-                                <a class="dropdown-item" asp-action="Update" asp-controller="Blog" asp-route-id="@blog.Id">Redaktə et</a>
-                                <a class="dropdown-item text-danger deleteBlog" id="@blog.Id">Sil</a>
+                                <a class="dropdown-item" asp-action="Update" asp-controller="Blog" asp-route-id="@blog.Id">Edit</a>
+                                <a class="dropdown-item text-danger deleteBlog" id="@blog.Id">Delete</a>
                             }
                             else
                             {
-                                <a class="dropdown-item recoverBlog" id="@blog.Id">Bərpa et</a>
-                                <a class="dropdown-item text-danger hardDeleteBlog" id="@blog.Id">Birdəfəlik sil</a>
+                                <a class="dropdown-item recoverBlog" id="@blog.Id">Recover</a>
+                                <a class="dropdown-item text-danger hardDeleteBlog" id="@blog.Id">Hard Delete</a>
                             }
                         </div>
                     </div> <!-- dropdown //end -->

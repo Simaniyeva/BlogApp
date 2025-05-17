@@ -1,10 +1,15 @@
+using System.Text.Json.Serialization;
 using BusinessLogicLayer.Utilities.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+    });
 builder.Services.AddBusinessConfiguration(builder.Configuration);
 
 var app = builder.Build();

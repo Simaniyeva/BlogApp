@@ -8,7 +8,7 @@
             <article class="icontext">
                 <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-person"></i></span>
                 <div class="text">
-                    <h6 class="mb-1 card-title">Ümumi İstifadəçi sayı</h6> <span>@Model.UserResult.Count()</span>
+                    <h6 class="mb-1 card-title">Total Number of Users</h6> <span>@Model.UserResult.Count()</span>
                 </div>
             </article>
         </div>
@@ -18,7 +18,7 @@
             <article class="icontext">
                 <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-comment"></i></span>
                 <div class="text">
-                    <h6 class="mb-1 card-title">Ümumi rəy sayı</h6> <span>@Model.ReviewResult.Count()</span>
+                    <h6 class="mb-1 card-title">Total number of reviews</h6> <span>@Model.ReviewResult.Count()</span>
                 </div>
             </article>
         </div>
@@ -28,7 +28,7 @@
             <article class="icontext">
                 <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-bookmark"></i></span>
                 <div class="text">
-                    <h6 class="mb-1 card-title">Yadda Saxlanılan Məqalə Sayı</h6> <span>@Model.SavedItemResult.Count()</span>
+                    <h6 class="mb-1 card-title">Number of Saved Articles</h6> <span>@Model.SavedItemResult.Count()</span>
                 </div>
             </article>
         </div>
@@ -38,7 +38,7 @@
     <div class="col-lg-4">
         <div class="card mb-4">
             <article class="card-body">
-                <h5 class="card-title">Yeni üzvlər</h5>
+                <h5 class="card-title">New members</h5>
                 <div class="new-member-list">
                     @foreach (UserGetDto user in Model.UserResult)
                     {
@@ -51,7 +51,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <a asp-action="Get" asp-controller="User" asp-route-id="@user.Id" class="btn btn-xs">Ətraflı göstər</a>
+                            <a asp-action="Get" asp-controller="User" asp-route-id="@user.Id" class="btn btn-xs">Show details</a>
                         </div>
                     }
                 </div>
@@ -62,7 +62,7 @@
     <div class="col-lg-8">
         <div class="card mb-4">
             <header class="card-header">
-                <h4 class="card-title">Son rəylər</h4>
+                <h4 class="card-title">Recent reviews</h4>
             </header>
             <div class="card-body">
                 <div class="table-responsive">

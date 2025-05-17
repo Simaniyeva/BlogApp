@@ -73,6 +73,10 @@ public class ReviewManager : IReviewService
     {
 
         Review review = await _unitOfWork.ReviewRepository.GetAsync(b => b.Id == id && !b.isDeleted);
+        if (review == null) 
+        {
+            return new ErrorResult(Messages.NotFound(Messages.Review));
+        }
         review.isDeleted = true;
         _unitOfWork.ReviewRepository.Update(review);
         int result = await _unitOfWork.SaveAsync();

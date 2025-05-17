@@ -5,11 +5,11 @@
 
 <div class="content-header">
     <div>
-        <h2 class="text-center">Təfərrüatlar</h2>
+        <h2 class="text-center">Details</h2>
     </div>
     <div>
         <div class="d-grid">
-            <a asp-action="Index" asp-controller="Blog" class="btn btn-primary ">Məqalələrə qayıt</a>
+            <a asp-action="Index" asp-controller="Blog" class="btn btn-primary ">Back to blogs</a>
         </div>
     </div>
 </div>
@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Məqalə başlığı</p>
+                                <p class="mb-0">Article Title</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">@Model.Data.Title</p>
@@ -32,7 +32,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Açıqlama</p>
+                                <p class="mb-0">Description</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">@Model.Data.Description</p>
@@ -41,7 +41,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Oxuma müddəti</p>
+                                <p class="mb-0">Reading Time</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">@Model.Data.ReadingTime</p>
@@ -50,7 +50,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Baxış sayı</p>
+                                <p class="mb-0">View Count</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">@Model.Data.ViewCount</p>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Yadda saxlanma sayı</p>
+                                <p class="mb-0">Number of saves</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">@Model.Data.SavedItems.Count()</p>
@@ -67,18 +67,18 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Statusu</p>
+                                <p class="mb-0">Status</p>
                             </div>
                             <div class="col-sm-9">
                                 @{
                                     if (@Model.Data.isDeleted)
                                     {
-                                        <a href="#" class="btn btn-danger rounded font-md">Deaktiv</a>
+                                        <a href="#" class="btn btn-danger rounded font-md">Deactive</a>
 
                                     }
                                     else
                                     {
-                                        <a href="#" class="btn btn-primary btn-sm rounded">Aktiv</a>
+                                        <a href="#" class="btn btn-primary btn-sm rounded">Active</a>
 
                                     }
                                 }
@@ -87,7 +87,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Yaradılma tarixi</p>
+                                <p class="mb-0">Created Date</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">@Model.Data.CreatedDate</p>

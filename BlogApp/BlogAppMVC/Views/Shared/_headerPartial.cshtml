@@ -20,23 +20,23 @@
         <nav class="nav-wrap flex" role="navigation" aria-label="main navigation">
             <ul class="nav-item-container nav-left no-style-list flex" role="menu">
                 <li class="nav-item" role="menuitem">
-                    <a asp-action="Index" asp-controller="Home" class="nav-link">Əsas səhifə</a>
+                    <a asp-action="Index" asp-controller="Home" class="nav-link">Main</a>
                 </li>
                 <li class="nav-item" role="menuitem">
-                    <a asp-action="Index" asp-controller="Tag" class="nav-link">Teqlər</a>
+                    <a asp-action="Index" asp-controller="Tag" class="nav-link">Tags</a>
                 </li>
 
                 <li class="nav-item has-dropdown" role="menuitem">
-                    <a href="#" class="nav-link more-link">Daha çox<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z" /><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" /></svg></a>
+                    <a href="#" class="nav-link more-link">More<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z" /><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" /></svg></a>
                     <ul class="no-style-list dropdown-menu">
 @*                        <li class="nav-item" role="menuitem">
-                            <a asp-action="YearlyArchive" asp-controller="Archive" class="nav-link">İllik Arxiv</a>
+                            <a asp-action="YearlyArchive" asp-controller="Archive" class="nav-link">Yearly Archive</a>
                         </li>
                         <li class="nav-item" role="menuitem">
-                            <a asp-action="MonthlyArchive" asp-controller="Archive" class="nav-link">Aylıq Arxiv</a>
+                            <a asp-action="MonthlyArchive" asp-controller="Archive" class="nav-link">Monthly Archive</a>
                         </li>*@
                         <li class="nav-item" role="menuitem">
-                            <a asp-action="Index" asp-controller="Contact" class="nav-link">Əlaqə</a>
+                            <a asp-action="Index" asp-controller="Contact" class="nav-link">Contact</a>
                         </li>
                     </ul>
                 </li>
@@ -58,13 +58,13 @@
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <li class="nav-item" role="menuitem">
-                        <a asp-action="Register" asp-controller="Account" class="btn btn-sm">Qeydiyyat</a>
+                        <a asp-action="Register" asp-controller="Account" class="btn btn-sm">Register</a>
                     </li>
                 }
                 else
                 {
                     <li class="nav-item" role="menuitem">
-                        <a asp-action="Logout" asp-controller="Account" class="btn btn-sm">Çıxış</a>
+                        <a asp-action="Logout" asp-controller="Account" class="btn btn-sm">Logout</a>
                     </li>
                 }
                 

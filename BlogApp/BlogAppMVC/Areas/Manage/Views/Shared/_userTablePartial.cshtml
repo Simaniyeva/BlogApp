@@ -5,11 +5,11 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>İstifadəçi</th>
-            <th>İstifadəçi adı</th>
+            <th>User</th>
+            <th>Username</th>
             <th>Email</th>
-            <th>Mobil nömrə</th>
-            <th>Əməliyyat</th>
+            <th>Mobile number</th>
+            <th>Transaction</th>
         </tr>
     </thead>
     <tbody>
@@ -30,23 +30,23 @@
                     @(
                         @user.PhoneNumber != null
                         ? user.PhoneNumber
-                        : "Mobil nömrəsi yoxdur."
+                        : "No Phone Number"
                     )
                 </td>
                 <td>
                     <div class="dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                         <div class="dropdown-menu blogDropDown">
-                            <a class="dropdown-item" asp-action="Get" asp-controller="User" asp-route-id="@user.Id">Ətraflı bax</a>
-                            <a class="dropdown-item" asp-action="Update" asp-controller="User" asp-route-id="@user.Id">Redaktə et</a>
+                            <a class="dropdown-item" asp-action="Get" asp-controller="User" asp-route-id="@user.Id">Show Details</a>
+                            <a class="dropdown-item" asp-action="Update" asp-controller="User" asp-route-id="@user.Id">Edit</a>
 
                             @if (!user.Roles.Contains("Admin")&& User.IsInRole("SuperAdmin"))
                             {
-                                <a class="dropdown-item text-danger deleteBlog" asp-action="EvokeToAdmin" asp-controller="User" asp-route-id="@user.Id">Admin et</a>
+                                <a class="dropdown-item text-danger deleteBlog" asp-action="EvokeToAdmin" asp-controller="User" asp-route-id="@user.Id"> Evoke to Admin</a>
                             }
                             else
                             {
-                                <a class="dropdown-item text-danger deleteBlog" asp-action="RevokeFromAdmin" asp-controller="User"  asp-route-id="@user.Id">Adminlikdən çıxar</a>
+                                <a class="dropdown-item text-danger deleteBlog" asp-action="RevokeFromAdmin" asp-controller="User"  asp-route-id="@user.Id">Revoke from Admin</a>
 
                             }
                         </div>
